@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<title>IDK</title>
+<body onload="onload()">
+<img width="200px" id="image">
+
+
+
+<script>
+function onload() {
+	var xhr = new XMLHttpRequest();
+    
+    xhr.open("GET", "blob.png");
+    xhr.responseType = "arraybuffer";
+    
+    xhr.onload = function (e) {
+    	var blob = new Blob([xhr.response]);
+        var url = URL.createObjectURL(blob);
+        
+        console.log(url);
+        
+        var img = document.getElementById("image");
+        img.src = url;
+    }
+    
+    xhr.send();
+}
+
+</script>
+
+</body>
+</html>
